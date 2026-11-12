@@ -1,0 +1,4 @@
+# Embedding flags are set by Microsoft in the original fonts.
+truetype-font-prohibits-installable-embedding *
+# fonts-wine ships its own Webdings-compatible font.
+duplicate-font-file *

@@ -1,0 +1,60 @@
+#!/bin/sh
+# Install the bundled fonts with the same layout update-ms-fonts produces:
+# long-name real files plus short-name symlinks.
+#
+# usage: install-fonts <source-dir> <dest-root>
+set -e
+
+SRC=$1
+DEST=$2
+FONTDIR=usr/share/fonts/truetype/msttcorefonts
+DOCDIR=usr/share/doc/ttf-mscorefonts-bundled
+MAP=$(dirname "$0")/expected-fonts.txt
+
+# Case-insensitive lookup of a single file in $SRC.
+lookup() {
+    find "$SRC" -maxdepth 1 -iname "$1" | head -n 1
+}
+
+mkdir -p "$DEST/$FONTDIR"
+missing=""
+
+grep -v '^#' "$MAP" | while read -r short long; do
+    [ -n "$short" ] || continue
+    file=$(lookup "$long")
+    [ -n "$file" ] || file=$(lookup "$short")
+    if [ -z "$file" ]; then
+        echo "missing font: $long (or $short)" >&2
+        echo "$short" >> "$DEST/.missing"
+        continue
+    fi
+    # -L: fonts copied from an existing install may themselves be symlinks
+    cp -L "$file" "$DEST/$FONTDIR/$long"
+    chmod 644 "$DEST/$FONTDIR/$long"
+    ln -sf "$long" "$DEST/$FONTDIR/$short"
+done
+
+if [ -e "$DEST/.missing" ]; then
+    rm -f "$DEST/.missing"
+    echo "error: put all fonts listed in debian/expected-fonts.txt in $SRC/" >&2
+    exit 1
+fi
+
+# The EULA (licen.txt inside the .exe cabinets, installed by the original
+# package as READ_ME!.gz) is shipped if provided.
+eula=$(lookup licen.txt)
+[ -n "$eula" ] || eula=$(lookup 'READ_ME!')
+if [ -n "$eula" ]; then
+    mkdir -p "$DEST/$DOCDIR"
+    cp -L "$eula" "$DEST/$DOCDIR/READ_ME!"
+    chmod 644 "$DEST/$DOCDIR/READ_ME!"
+else
+    eula=$(lookup 'READ_ME!.gz')
+    if [ -n "$eula" ]; then
+        mkdir -p "$DEST/$DOCDIR"
+        gzip -dc "$eula" > "$DEST/$DOCDIR/READ_ME!"
+        chmod 644 "$DEST/$DOCDIR/READ_ME!"
+    else
+        echo "warning: no licen.txt / READ_ME!.gz in $SRC/; EULA not shipped" >&2
+    fi
+fi

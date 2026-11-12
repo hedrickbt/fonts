@@ -1,0 +1,6 @@
+ttf-mscorefonts-bundled (1.0) noble; urgency=medium
+
+  * Initial release: ship the Microsoft core fonts inside the package
+    instead of downloading them at install time.
+
+ -- Brooke Hedrick <brooke.t.hedrick@gmail.com>  Thu, 12 Nov 2026 17:00:00 -0600

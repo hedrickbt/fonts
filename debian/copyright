@@ -1,0 +1,29 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Microsoft TrueType Core Fonts for the Web
+Source: https://sourceforge.net/projects/corefonts/
+
+Files: fonts/*
+Copyright: Microsoft Corporation and the respective font foundries
+           (Monotype, Bigelow & Holmes, Matthew Carter, Vincent Connare,
+           Geraldine Wade, David Berlow)
+License: Microsoft-core-fonts-EULA
+ The fonts are distributed by Microsoft under the End-User License
+ Agreement shipped inside each of the original .exe cabinets (licen.txt).
+ When provided at build time it is installed as
+ /usr/share/doc/ttf-mscorefonts-bundled/READ_ME!
+ .
+ That EULA allows redistribution only in the original, unmodified .exe
+ form. This package redistributes the extracted .ttf files and is
+ therefore intended for private/internal use only; do not upload it to a
+ public archive or PPA.
+
+Files: debian/*
+Copyright: 2026 Brooke Hedrick <brooke.t.hedrick@gmail.com>
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ On Debian systems, the full text of the GNU General Public License
+ version 2 can be found in /usr/share/common-licenses/GPL-2.

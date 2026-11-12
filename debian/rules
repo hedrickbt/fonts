@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+# The top-level Makefile is the Docker wrapper, not an upstream build system.
+override_dh_auto_clean override_dh_auto_build override_dh_auto_test:
+
+override_dh_auto_install:
+	sh debian/install-fonts fonts debian/ttf-mscorefonts-bundled

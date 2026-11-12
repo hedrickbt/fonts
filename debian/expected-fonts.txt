@@ -1,0 +1,33 @@
+# short-name             installed long-name
+# Same mapping the original update-ms-fonts uses: the long name is the real
+# file, the short name is a symlink to it. Either name is accepted in fonts/.
+andalemo.ttf             Andale_Mono.ttf
+arial.ttf                Arial.ttf
+arialbd.ttf              Arial_Bold.ttf
+arialbi.ttf              Arial_Bold_Italic.ttf
+ariali.ttf               Arial_Italic.ttf
+ariblk.ttf               Arial_Black.ttf
+comic.ttf                Comic_Sans_MS.ttf
+comicbd.ttf              Comic_Sans_MS_Bold.ttf
+cour.ttf                 Courier_New.ttf
+courbd.ttf               Courier_New_Bold.ttf
+courbi.ttf               Courier_New_Bold_Italic.ttf
+couri.ttf                Courier_New_Italic.ttf
+georgia.ttf              Georgia.ttf
+georgiab.ttf             Georgia_Bold.ttf
+georgiai.ttf             Georgia_Italic.ttf
+georgiaz.ttf             Georgia_Bold_Italic.ttf
+impact.ttf               Impact.ttf
+times.ttf                Times_New_Roman.ttf
+timesbd.ttf              Times_New_Roman_Bold.ttf
+timesbi.ttf              Times_New_Roman_Bold_Italic.ttf
+timesi.ttf               Times_New_Roman_Italic.ttf
+trebuc.ttf               Trebuchet_MS.ttf
+trebucbd.ttf             Trebuchet_MS_Bold.ttf
+trebucbi.ttf             Trebuchet_MS_Bold_Italic.ttf
+trebucit.ttf             Trebuchet_MS_Italic.ttf
+verdana.ttf              Verdana.ttf
+verdanab.ttf             Verdana_Bold.ttf
+verdanai.ttf             Verdana_Italic.ttf
+verdanaz.ttf             Verdana_Bold_Italic.ttf
+webdings.ttf             Webdings.ttf
